@@ -19,9 +19,11 @@ module SalaReuniao
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.i18n.default_locale = :'pt-BR'
+
     #Rspec configuration
     config.generators do |g|
-      g.test_framework :rspec, :helpers_specs => false, :request_specs => false
+      g.test_framework :rspec, :helper_specs => false, :routing_specs => false, :views_specs => false
     end
   end
 end

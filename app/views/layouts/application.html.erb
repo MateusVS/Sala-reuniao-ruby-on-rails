@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SalaReuniao</title>
+    <title>Sala de Reunião</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+
+    <div class="container mt-2">
+
+      <% flash.each do |message_type, message| %>
+        <%= content_tag 'div', class: "alert alert-#{message_type} alet-dismissible", role: 'alert' do %>
+          <button type="button" class="close" data-dimiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= message %>
+        <% end %>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+    
   </body>
 </html>
