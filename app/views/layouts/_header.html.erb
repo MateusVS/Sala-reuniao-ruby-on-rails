@@ -5,15 +5,30 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
       </li>
-     <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li> -->
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Agenda <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Configurações Usuário', edit_user_path(current_user), class: 'nav-link' %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= button_to 'Sair', loggout_path, method: :delete, class: 'btn btn-link nav-link' %>
+        </li>
+      <% end %>
+
     </ul>
   </div>
 </nav>

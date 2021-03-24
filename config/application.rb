@@ -23,7 +23,7 @@ module SalaReuniao
 
     #Rspec configuration
     config.generators do |g|
-      g.test_framework :rspec, :helper_specs => false, :routing_specs => false, :views_specs => false
+      g.test_framework :rspec, :helper_specs => false, :routing_specs => false, :views_specs => false, :requests_specs => false
     end
   end
 end

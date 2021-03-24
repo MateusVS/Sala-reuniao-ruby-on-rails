@@ -1,6 +1,7 @@
-<h1>Editing User</h1>
+<div class="col-12 mt-5 d-flex flex-column justify-content-center align-items-center">
+    <h1>Editar Conta</h1>
 
-<%= render 'form', user: @user %>
+    <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <%= link_to 'Cancelar', user_path(current_user.id), class: 'btn btn-lg btn-link'%>
+</div>

@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ edit update destroy ]
 
   def show
   end
 
   def new
+    redirect_to user_path(current_user) if user_signed_in?
     @user = User.new
   end
 
