@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <h2>Olá, <%= current_user.name %>!</h2>
         <hr/>
-        <%= button_to 'Acessar agendamento da sala de aula', '#', class: 'btn btn-lg btn-primary mt-4' %>
+        <%= link_to 'Acessar agendamento da sala de aula', reservations_path(current_user.id), class: 'btn btn-lg btn-primary mt-4' %>
     </div>
     <span class="text-center"><%= link_to 'Editar Usuário', edit_user_path(current_user) %></span>
 </div>

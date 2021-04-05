@@ -24,23 +24,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.find params[:id]
+
+    if @user.update(user_params)
+      flash[:success] = 'Dados do usuário atualizados com sucesso'
+      redirect_to root_url
+    else
+      flash[:danger] = 'Ocorreu um erro tentar atualizar os dados do usuário'
+      render 'edit'
     end
   end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Conta excluida com sucesso'
+    sign_out
+    redirect_to root_url
   end
 
   private

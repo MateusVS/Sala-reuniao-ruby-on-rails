@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to be_truthy
     end
 
-    it "Is the user invalidate?d" do
+    it "Is the user invalidated?" do
       user = User.new
       user.name = "Mateus"
       user.email = "mateus@gmail"

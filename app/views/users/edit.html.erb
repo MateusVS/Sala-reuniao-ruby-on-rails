@@ -2,6 +2,10 @@
     <h1>Editar Conta</h1>
 
     <%= render 'form', user: @user %>
+    <%= render 'confirmation-modal', user: @user %>
 
+    <div class="form-group col-md-6 col-sm-11">
+      <button class="btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Exlcuir Conta</button>
+    </div>
     <%= link_to 'Cancelar', user_path(current_user.id), class: 'btn btn-lg btn-link'%>
 </div>

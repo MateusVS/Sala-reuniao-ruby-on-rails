@@ -9,6 +9,11 @@ pt-BR:
         password: 'Senha'
         password_confirmation: 'Confirmação da Senha'
 
+      reservation:
+        details: 'Detalhes'
+        date: 'Data/Hora'
+        user_id: 'Usuário'
+
     errors:
       messages:
         blank: 'não pode estar em branco'

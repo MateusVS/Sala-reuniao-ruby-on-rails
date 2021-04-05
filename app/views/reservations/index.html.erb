@@ -1,0 +1,11 @@
+<section class="section">
+  <div class="container mt-2">
+    <div id="calendar"></div>
+  </div>
+</section>
+
+<%= render 'reservations/new-modal', reservation: @reservation  %>
+
+<%= render 'reservations/edit-modal', reservation: @reservation %>
+
+<%= render 'reservations/confirmation-modal' %>

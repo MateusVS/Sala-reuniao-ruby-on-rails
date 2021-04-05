@@ -1,0 +1,58 @@
+<div class="modal fade" id="editReservation" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editReservationLabel">Editar Reserva</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@reservation, remote: true, :html => { :method => "patch"}) do |form| %>
+          <% if reservation.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(reservation.errors.count, "error") %> Ocorreu um erro ao editar o agendamento:</h2>
+
+              <ul>
+                <% reservation.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= form.hidden_field :id, :class => 'edit', :required => true %>
+          <input type="hidden" id="userId" value="<%= current_user.id %>" />
+          <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                  <%= form.label :user_id %>
+                  <input type="text" class="form-control edit" id="userName" placeholder="Usuário" readonly required />
+                  <%= form.hidden_field :user_id, value: "", :class => 'edit', :required => true %>
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <%= form.label :date %>
+                <%= form.datetime_local_field :date, :class => 'form-control edit', :step => '3600', :required => true %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <%= form.label :details %>
+              <%= form.text_area :details, :class => 'form-control edit', :rows => '10' %>
+            </div>
+          </div>
+        
+          <div class="actions modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" id="deleteBtn" data-toggle="modal" data-target="#exampleModalCenter">Exlcuir Registro</button>
+            <%= form.submit 'Confirmar', :class => 'btn btn-success', :id => 'confirmationBtn' %>            
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
