@@ -7,7 +7,9 @@ RSpec.describe Reservation, type: :model do
       reservation.user_id = 1
       reservation.details = "Some details"
       reservation.date = DateTime.now
-
+      
+      reservation.valid?
+      puts(reservation.errors)
       expect(reservation.valid?).to be_truthy
     end
 
