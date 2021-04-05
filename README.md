@@ -1,24 +1,33 @@
-# README
+# Sala de Reunião
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema desenvolvido em Ruby on Rails para controlar as reservas de uma sala de reunião
 
-Things you may want to cover:
+* Versão do Rails 6.1.3
+* Banco de dados: Postgres
 
-* Ruby version
+## Para rodar o projeto
 
-* System dependencies
+##### 1. Clone o repositório
+```bash
+git clone https://github.com/MateusVS/Sala-reuniao-ruby-on-rails
+```
+##### 2. Renomeie o arquivo .env.example para .env
+E altere as configurações do banco de dados para se adequar ao seu ambiente
 
-* Configuration
+##### 3. Criação das tabelas do banco de dados
 
-* Database creation
+Execute o seguinte comando para rodar as migrations
 
-* Database initialization
+```ruby
+rails db:migrate
+```
 
-* How to run the test suite
+##### 4. Inicie o servidor 
 
-* Services (job queues, cache servers, search engines, etc.)
+Você pode iniciar o servidor utilizando o seguinte comando
 
-* Deployment instructions
+```ruby
+rails s
+```
 
-* ...
+Sua aplicação estara disponível em http://localhost:3000
