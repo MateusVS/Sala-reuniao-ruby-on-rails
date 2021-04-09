@@ -46,9 +46,13 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation.destroy
-    flash[:success] = 'Agendamento excluido com sucesso'
-    render :index
+    if @reservation.check_if_is_current_user(current_user.id)
+      flash[:danger] = 'Não é possível excluir agendamentos que pertençam a outro usuário'
+    else
+      @reservation.destroy
+      flash[:success] = 'Agendamento excluido com sucesso'
+    end
+    redirect_back(fallback_location: :index)
   end
 
   private
