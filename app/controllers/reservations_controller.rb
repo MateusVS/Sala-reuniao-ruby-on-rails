@@ -32,11 +32,15 @@ class ReservationsController < ApplicationController
     @new_reservation = Reservation.new(reservation_params)
 
     respond_to do |format|
-      if @reservation.update(reservation_params)
-        flash[:success] = 'Agendamento atualizado com sucesso'
+      if @reservation.check_if_is_current_user(current_user.id)
+        flash[:danger] = 'Não é possível editar agendamentos que pertençam a outro usuário'
       else
-        flash[:danger] = 'Ocorreu um erro ao atualizar o agendamento. Verifique se a data esta disponível, ou se encontra na semana atual ou posterior'
-      end    
+        if @reservation.update(reservation_params)
+          flash[:success] = 'Agendamento atualizado com sucesso'
+        else
+          flash[:danger] = 'Ocorreu um erro ao atualizar o agendamento. Verifique se a data esta disponível, ou se encontra na semana atual ou posterior'
+        end  
+      end      
       format.js { render js: 'window.top.location.reload(true);' }
     end
   end
